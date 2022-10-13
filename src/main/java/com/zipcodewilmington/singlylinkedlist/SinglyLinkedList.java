@@ -1,134 +1,45 @@
 package com.zipcodewilmington.singlylinkedlist;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.sun.xml.internal.bind.v2.TODO;
+import javafx.scene.Node;
 
 /**
  * Created by leon on 1/10/18.
  */
-public class SinglyLinkedList {
+public class SinglyLinkedList extends iNode {
 
-    /**Must not use the LinkedList or ArrayList OR any other Java Collections
-     * Must have:
-     * ===add===
-     * ===remove===
-     * ===contains===
-     * ===find===
-     * ===size===
-     * ===get===
-     * ===copy===
-     * ===sort===
-     * ===Method Definition Complete===*/
 
-    Integer data;
-    SinglyLinkedList next; //SinglyLinkedList == Node
+    // TODO Refreshing LinkedList
+    /**
+     * add -- add an element to the list
+     * remove -- remove an element (specified by numeric index) from the list
+     * contains -- returns true if the element is in the list, false otherwise
+     * find -- returns the element's index if it is in the list, -1 otherwise
+     * size -- returns the current size of the list
+     * get -- returns the element at the specified index
+     * copy -- returns a new linked list containing the same values (look up deep versus shallow copy)
+     * sort -- sorts the list using your algorithm of choice. You must perform the sorting yourself (no fair using someone else's library)
+     *
+     * implement your linked list as a generic class that can store any type of object
+     * Add a reverse method
+     * Add a slice method that returns a copy of a subset of the element of the list (eg slice(2,8) returns a new linked list containing elements #2,3,4,5,6,7
+     * -- but not 8)
+     **/
 
-    public SinglyLinkedList(int data, SinglyLinkedList newNode) {
-        this.data = data;
-        this.next = newNode;
-    }
+    public iNode head = null;
+    public iNode tail = null;
 
-    /**Add*/
-    public void addSinglyAtFront(SinglyLinkedList newNode, SinglyLinkedList head){
-        newNode.data = 10;
-        newNode.next = head;
-        head.next = newNode;
-    }
-    public void addSinglyAtMiddle(SinglyLinkedList newNode, SinglyLinkedList head, int target){
-        newNode.data = 10;
-        SinglyLinkedList temp = head;
-        while (temp.data != target){
-            temp = temp.next;
-        }
-        newNode.next = temp.next;
-        temp.next = newNode;
-    }
-    public void addSinglyAtEnd(SinglyLinkedList newNode, SinglyLinkedList head){
-        newNode.data = 10;
-        SinglyLinkedList temp = head;
-        while (temp.next != null){
-            temp = temp.next;
-        }
-        temp.next = newNode;
-        newNode.next = null;
-    }
-    /**Remove*/
-    public void removeSinglyAtFront(SinglyLinkedList head) {
-        head = head.next;
-    }
-    public void removeSinglyAtMiddle(SinglyLinkedList head, int target) {
-        SinglyLinkedList temp = head;
-        while(temp.data != target) {
-            temp = temp.next;
-        }
-        temp.next = temp.next.next;
-    }
-    public void removeSinglyAtEnd(SinglyLinkedList head) {
-        SinglyLinkedList temp = head;
-        while (temp.next.next != null) {
-            temp = temp.next;
-        }
-        temp.next = null;
-    }
-    public Boolean contains(SinglyLinkedList valueToContain) {
-        if (next == null) return false;
-        else return next.contains(valueToContain);
-    }
-    /**Find*/
-    public SinglyLinkedList find (SinglyLinkedList head, int target) {
-        SinglyLinkedList temp = head;
-        while (temp != null && temp.data != target) {
-            temp = temp.next;
-        }
-        return temp;
-    }
-    /**Size*/
-    public Integer size (SinglyLinkedList head) {
-        SinglyLinkedList temp = head;
-        Integer count = 0;
-        while (temp != null) {
-            count++; temp = temp.next;
-        }
-        return count;
-    }
-    /**Get*/
-    public SinglyLinkedList get () {
-        return this.next;
-    }
-    /**Copy*/
-    public SinglyLinkedList copy (SinglyLinkedList head) {
-        SinglyLinkedList temp = head;
-        SinglyLinkedList newNode = null;
-        SinglyLinkedList tail = null;
+    public void add(int data){
 
-        while (temp != null) {
-            if (newNode == null) {
-                newNode = new SinglyLinkedList(temp.data, newNode);
-                tail = newNode;
-            }
-            else {
-                tail.next = new SinglyLinkedList(temp.data, tail.next);
-                tail = tail.next;
-            }
-        }
-        return newNode;
-    }
-    /**Sort*/
-    public void sort (SinglyLinkedList head) {
-        SinglyLinkedList current = head, index = null;
-        Integer temp;
-        if (head == null) {
-            return;
+        iNode newNode = new iNode(data);
+
+        if(head == null) {
+            head = newNode;
+            tail = newNode;
         }
         else {
-            while (current != null) {
-                if (current.data > index.data) {
-                    temp = current.data;
-                    current.data = index.data;
-                    index.data = temp;
-                }
-                index = index.next;
-            }
-            current = current.next;
+            tail.next = newNode;
+            tail = newNode;
         }
     }
 }
