@@ -26,20 +26,51 @@ public class SinglyLinkedList extends iNode {
      * -- but not 8)
      **/
 
-    public iNode head = null;
-    public iNode tail = null;
+//    public iNode head = null;
+//    public iNode tail = null;
+//
+//    public void add(int data){
+//
+//        iNode newNode = new iNode(data);
+//
+//        if(head == null) {
+//            head = newNode;
+//            tail = newNode;
+//        }
+//        else {
+//            tail.next = newNode;
+//            tail = newNode;
+//        }
+//    }
 
-    public void add(int data){
+    public SinglyLinkedList(int data, SinglyLinkedList newNode) {
+        this.data = data;
+        this.next = newNode;
+    }
 
-        iNode newNode = new iNode(data);
+    public void addSinglyAtFront(SinglyLinkedList newNode, SinglyLinkedList head){
+        newNode.data = 10;
+        newNode.next = head;
+        head.next = newNode;
+    }
 
-        if(head == null) {
-            head = newNode;
-            tail = newNode;
+    public void addSinglyAtEnd(SinglyLinkedList newNode, SinglyLinkedList head){
+        newNode.data = 10;
+        SinglyLinkedList temp = head;
+        while (temp.next != null){
+            temp = temp.next;
         }
-        else {
-            tail.next = newNode;
-            tail = newNode;
+        temp.next = newNode;
+        newNode.next = null;
+    }
+
+    public void addSinglyAtMiddle(SinglyLinkedList newNode, SinglyLinkedList head, int target){
+        newNode.data = 10;
+        SinglyLinkedList temp = head;
+        while (temp.data != target){
+            temp = temp.next;
         }
+        newNode.next = temp.next;
+        temp.next = newNode;
     }
 }
