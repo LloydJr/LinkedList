@@ -73,4 +73,25 @@ public class SinglyLinkedList extends iNode {
         newNode.next = temp.next;
         temp.next = newNode;
     }
+    public void removeSinglyAtFront(SinglyLinkedList head) {
+        head = head.next;
+    }
+    public void removeSinglyAtMiddle(SinglyLinkedList head, int target) {
+        SinglyLinkedList temp = head;
+        while(temp.data != target) {
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+    }
+    public void removeSinglyAtEnd(SinglyLinkedList head) {
+        SinglyLinkedList temp = head;
+        while (temp.next.next != null) {
+            temp = temp.next;
+        }
+        temp.next = null;
+    }
+    public Boolean contains(SinglyLinkedList valueToContain) {
+        if (next == null) return false;
+        else return next.contains(valueToContain);
+    }
 }
