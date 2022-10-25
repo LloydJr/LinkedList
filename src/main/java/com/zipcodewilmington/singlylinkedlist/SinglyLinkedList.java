@@ -94,4 +94,21 @@ public class SinglyLinkedList extends iNode {
         if (next == null) return false;
         else return next.contains(valueToContain);
     }
+
+    public SinglyLinkedList find (SinglyLinkedList head, int target) {
+        SinglyLinkedList temp = head;
+        while (temp != null && temp.data != target) {
+            temp = temp.next;
+        }
+        return temp;
+    }
+
+    public Integer size (SinglyLinkedList head) {
+        SinglyLinkedList temp = head;
+        Integer count = 0;
+        while (temp != null) {
+            count++; temp = temp.next;
+        }
+        return count;
+    }
 }
