@@ -111,4 +111,25 @@ public class SinglyLinkedList extends iNode {
         }
         return count;
     }
+
+    public SinglyLinkedList get () {
+        return this.next;
+    }
+    public SinglyLinkedList copy (SinglyLinkedList head) {
+        SinglyLinkedList temp = head;
+        SinglyLinkedList newNode = null;
+        SinglyLinkedList tail = null;
+
+        while (temp != null) {
+            if (newNode == null) {
+                newNode = new SinglyLinkedList(temp.data, newNode);
+                tail = newNode;
+            }
+            else {
+                tail.next = new SinglyLinkedList(temp.data, tail.next);
+                tail = tail.next;
+            }
+        }
+        return newNode;
+    }
 }
